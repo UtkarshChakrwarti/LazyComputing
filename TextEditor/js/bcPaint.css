@@ -1,0 +1,53 @@
+#bcPaint-container{
+  width: 100%;
+  height: 100%;
+  cursor: default;
+}
+
+#bcPaint-header{
+  width: 100%;
+  height: 25px;
+}
+
+#bcPaint-palette{
+  text-align: center;
+  border-bottom: 1px solid #555;
+  -moz-box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.2);
+  outline: black;user-select: none;
+  background-color: #FFF;
+  cursor: default;
+}
+
+.bcPaint-palette-color{
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  cursor: default;
+  
+ 
+  
+  -moz-box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.2);
+  outline: black;user-select: none;
+}
+
+
+#bcPaint-canvas-container{
+  width: 100%;
+  height: calc(100% - 50px);
+ 
+}
+
+#bcPaint-canvas-container > canvas{
+  border-top:1 px solid #696969;
+  border:none;
+ 
+}
+
+#bcPaint-bottom{
+  width: 100%;
+  height: 25px;
+  text-align: center;
+}
+

@@ -1,0 +1,346 @@
+   body {
+    background: #ad5389;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3c1053, #ad5389);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3c1053, #ad5389); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+      color:white;
+      outline: none;
+      user-select: none;
+		}
+  
+
+    .outer {
+      display: table;
+      position: absolute;
+      top:0px;
+      left:0px;
+      height: 100%;
+      width: 100%;
+    }
+    
+    .middle {
+      display: table-cell;
+      vertical-align: middle;
+    }
+    
+    #loading {
+      margin-left: auto;
+      margin-right: auto;
+      width: 400px;
+     
+  background: transparent;
+  position: relative;
+  width: 6em;
+  height: 100%;
+  margin: 0 auto;
+	}
+#bottom{
+  position:absolute;
+  left:10px;
+  bottom:10px;
+  
+}
+.loading {
+  width: 6em;
+  height: 5em;
+  position: absolute;
+  text-align: center;
+  top: 40%;
+	}
+
+.point {
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 50%;
+  margin: 0 0.35em 0.6em;
+  display: inline-block;
+	}
+
+.point:nth-child(1) {
+  animation: color 1100ms infinite ease-in-out;
+	}
+
+.row:nth-child(1) {
+  animation: opacity 1100ms infinite ease-in-out;
+	}
+
+.point:nth-child(2) {
+  animation: color 1200ms infinite ease-in-out;
+	}
+
+.row:nth-child(2) {
+  animation: opacity 1200ms infinite ease-in-out;
+	}
+
+.point:nth-child(3) {
+  animation: color 1300ms infinite ease-in-out;
+	}
+
+.row:nth-child(3) {
+  animation: opacity 1300ms infinite ease-in-out;
+	}
+
+.point:nth-child(4) {
+  animation: color 1400ms infinite ease-in-out;
+	}
+
+.row:nth-child(4) {
+  animation: opacity 1400ms infinite ease-in-out;
+	}
+
+.point:nth-child(5) {
+  animation: color 1500ms infinite ease-in-out;
+	}
+
+.row:nth-child(5) {
+  animation: opacity 1500ms infinite ease-in-out;
+	}
+
+.point:nth-child(6) {
+  animation: color 1600ms infinite ease-in-out;
+	}
+
+.row:nth-child(6) {
+  animation: opacity 1600ms infinite ease-in-out;
+	}
+
+.point:nth-child(7) {
+  animation: color 1700ms infinite ease-in-out;
+	}
+
+.row:nth-child(7) {
+  animation: opacity 1700ms infinite ease-in-out;
+	}
+
+.point:nth-child(8) {
+  animation: color 1800ms infinite ease-in-out;
+	}
+
+.row:nth-child(8) {
+  animation: opacity 1800ms infinite ease-in-out;
+	}
+
+.point:nth-child(9) {
+  animation: color 1900ms infinite ease-in-out;
+	}
+
+.row:nth-child(9) {
+  animation: opacity 1900ms infinite ease-in-out;
+	}
+
+.point:nth-child(10) {
+  animation: color 2000ms infinite ease-in-out;
+	}
+
+.row:nth-child(10) {
+  animation: opacity 2000ms infinite ease-in-out;
+	}
+
+.point:nth-child(11) {
+  animation: color 2100ms infinite ease-in-out;
+}
+
+.row:nth-child(11) {
+  animation: opacity 2100ms infinite ease-in-out;
+}
+
+.point:nth-child(12) {
+  animation: color 2200ms infinite ease-in-out;
+}
+
+.row:nth-child(12) {
+  animation: opacity 2200ms infinite ease-in-out;
+}
+
+.point:nth-child(13) {
+  animation: color 2300ms infinite ease-in-out;
+}
+
+.row:nth-child(13) {
+  animation: opacity 2300ms infinite ease-in-out;
+}
+
+.point:nth-child(14) {
+  animation: color 2400ms infinite ease-in-out;
+}
+
+.row:nth-child(14) {
+  animation: opacity 2400ms infinite ease-in-out;
+}
+
+.point:nth-child(15) {
+  animation: color 2500ms infinite ease-in-out;
+}
+
+.row:nth-child(15) {
+  animation: opacity 2500ms infinite ease-in-out;
+}
+
+.point:nth-child(16) {
+  animation: color 2600ms infinite ease-in-out;
+}
+
+.row:nth-child(16) {
+  animation: opacity 2600ms infinite ease-in-out;
+}
+
+.point:nth-child(17) {
+  animation: color 2700ms infinite ease-in-out;
+}
+
+.row:nth-child(17) {
+  animation: opacity 2700ms infinite ease-in-out;
+}
+
+.point:nth-child(18) {
+  animation: color 2800ms infinite ease-in-out;
+}
+
+.row:nth-child(18) {
+  animation: opacity 2800ms infinite ease-in-out;
+}
+
+.point:nth-child(19) {
+  animation: color 2900ms infinite ease-in-out;
+}
+
+.row:nth-child(19) {
+  animation: opacity 2900ms infinite ease-in-out;
+}
+
+.point:nth-child(20) {
+  animation: color 3000ms infinite ease-in-out;
+}
+
+.row:nth-child(20) {
+  animation: opacity 3000ms infinite ease-in-out;
+}
+
+.point:nth-child(21) {
+  animation: color 3100ms infinite ease-in-out;
+}
+
+.row:nth-child(21) {
+  animation: opacity 3100ms infinite ease-in-out;
+}
+
+.point:nth-child(22) {
+  animation: color 3200ms infinite ease-in-out;
+}
+
+.row:nth-child(22) {
+  animation: opacity 3200ms infinite ease-in-out;
+}
+
+.point:nth-child(23) {
+  animation: color 3300ms infinite ease-in-out;
+}
+
+.row:nth-child(23) {
+  animation: opacity 3300ms infinite ease-in-out;
+}
+
+.point:nth-child(24) {
+  animation: color 3400ms infinite ease-in-out;
+}
+
+.row:nth-child(24) {
+  animation: opacity 3400ms infinite ease-in-out;
+}
+
+.point:nth-child(25) {
+  animation: color 3500ms infinite ease-in-out;
+}
+
+.row:nth-child(25) {
+  animation: opacity 3500ms infinite ease-in-out;
+}
+
+@keyframes opacity {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes color {
+  from, to {
+    background: black;
+    -webkit-filter: blur(1px);
+  }
+  50% {
+    background: white;
+    -webkit-filter: blur(1px);
+  }
+}
+/*welcome screen*/
+
+  
+ 
+  
+svg { 
+  height: 100vh;
+ overflow:hidden;
+ user-select: none;
+position:absolute;
+top:0px;
+bottom:0px;
+left:0px;
+ background-size: .12em 100%;
+ font: 16em/1 Roboto;
+ display:none;
+}
+
+.text--line {
+ font-size: .5em;
+}
+
+svg {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+}
+
+.text-copy {
+ fill: none;
+ stroke: white;
+ stroke-dasharray: 7% 28%;
+ stroke-width: 3px;
+ -webkit-animation: stroke-offset 9s infinite linear;
+         animation: stroke-offset 9s infinite linear;
+}
+.text-copy:nth-child(1) {
+ stroke: #0EF907;
+ stroke-dashoffset: 7%;
+}
+.text-copy:nth-child(2) {
+ stroke: #D61C59;
+ stroke-dashoffset: 14%;
+}
+.text-copy:nth-child(3) {
+ stroke: #E7D84B;
+ stroke-dashoffset: 21%;
+}
+.text-copy:nth-child(4) {
+ stroke: #FFF;
+ stroke-dashoffset: 28%;
+}
+.text-copy:nth-child(5) {
+ stroke: #2496EE;
+ stroke-dashoffset: 35%;
+}
+
+@-webkit-keyframes stroke-offset {
+ 50% {
+   stroke-dashoffset: 35%;
+   stroke-dasharray: 0 87.5%;
+ }
+}
+
+@keyframes stroke-offset {
+ 50% {
+   stroke-dashoffset: 35%;
+   stroke-dasharray: 0 87.5%;
+ }
+}

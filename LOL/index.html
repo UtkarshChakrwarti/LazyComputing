@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+
+<link href='style.css' rel='stylesheet'>
+
+
+</head>
+
+<body>
+    <div id="cont" class="outer">
+        <div class="middle">
+          <div id="loading">
+            <div class='loading'>
+  <div class='row'>
+    <div class='point'></div>
+    <div class='point'></div>
+    <div class='point'></div>
+    <div class='point'></div>
+  </div>
+  <div class='row'>
+    <div class='point'></div>
+    <div class='point'></div>
+    <div class='point'></div>
+    <div class='point'></div>
+  </div>
+  <div class='row'>
+    <div class='point'></div>
+    <div class='point'></div>
+    <div class='point'></div>
+    <div class='point'></div>
+  </div>
+  <div class='row'>
+    <div class='point'></div>
+    <div class='point'></div>
+    <div class='point'></div>
+    <div class='point'></div>
+  </div>
+            </div>
+          </div>
+        </div>
+    </div>
+<div id="bottom"style="display: none;">
+ 
+  <h1>
+  <font color=cyan style="font-weight:lighter;font-size: larger;">[&nbsp;</font>
+  <a href="" style ="color:white;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight:lighter;text-decoration:none;"class="typewrite" data-period="2000" data-type='[ "Hey I am SAM.", "I will help to keep your Data Safe", "I Love To Talk .", "Tell Me What Can I Do For You" ]'>
+  <span class="wrap"style="color:white;"></span>
+  </a> 
+  <font color=cyan style="font-weight: lighter;font-size: larger;">&nbsp;]</font>
+  </h1>
+
+</div>
+	
+<script src="script.js"></script>  
+<script src="headtrackr.js"></script>
+
+	<div  id="main">
+		<canvas style="visibility: hidden;"id="compare" width="320" height="240" style="display:none"></canvas>
+		<video style="visibility: hidden;"id="vid" autoplay loop width="320" height="240"></video>
+		<canvas style="visibility: hidden;" id="overlay" width="320" height="240"></canvas>
+		<canvas style="visibility: hidden;" id="debug" width="320" height="240"></canvas>
+
+		
+	</div>
+		<script>
+		  
+		
+			var videoInput = document.getElementById('vid');
+			var canvasInput = document.getElementById('compare');
+			var canvasOverlay = document.getElementById('overlay')
+			var debugOverlay = document.getElementById('debug');
+			var overlayContext = canvasOverlay.getContext('2d');
+			canvasOverlay.style.position = "absolute";
+			canvasOverlay.style.top = '0px';
+			canvasOverlay.style.zIndex = '100001';
+			canvasOverlay.style.display = 'block';
+			debugOverlay.style.position = "absolute";
+			debugOverlay.style.top = '0px';
+			debugOverlay.style.zIndex = '100002';
+			debugOverlay.style.display = 'none';
+
+		
+			statusMessages = {
+				"whitebalance" : "checking for stability of camera whitebalance",
+				"detecting" : "Detecting face",
+				"hints" : "Hmm. Detecting the face is taking a long time",
+				"redetecting" : "Lost track of face, redetecting",
+				"lost" : "Lost track of face",
+				"found" : "Tracking face"
+			};
+			
+			
+			document.addEventListener("headtrackrStatus", function(event) {
+				if(event.status != "found")
+				{
+				   	//darkfunction	
+		
+            main.style.display = 'none';
+            bottom.style.display = 'none';
+             cont.style.display = 'table';
+             welcome.style.display = 'none';
+					   			 
+				}
+				 if (event.status in statusMessages) {
+					var messagep = document.getElementById('headtrackerMessage');
+					//messagep.innerHTML = statusMessages[event.status];
+				}
+			}, true);
+			
+			// the face tracking setup
+			
+			var htracker = new headtrackr.Tracker({altVideo : {ogv : "./media/capture5.ogv", mp4 : "./media/capture5.mp4"}, calcAngles : true, ui : false, headPosition : false, debug : debugOverlay});
+			htracker.init(videoInput, canvasInput);
+			htracker.start();
+			
+			
+			
+			document.addEventListener("facetrackingEvent", function( event ) {
+		
+				overlayContext.clearRect(0,0,320,240);
+		
+				if (event.detection == "CS") {
+		
+		
+         main.style.display = 'block';
+         bottom.style.display = 'block';
+         cont.style.display = 'none';
+         welcome.style.display = 'block';
+         
+         
+					overlayContext.translate(event.x, event.y)
+					overlayContext.rotate(event.angle-(Math.PI/2));
+					overlayContext.strokeStyle = "orangered";
+					overlayContext.strokeRect((-(event.width/2)) >> 0, (-(event.height/2)) >> 0, event.width, event.height);
+					overlayContext.rotate((Math.PI/2)-event.angle);
+					overlayContext.translate(-event.x, -event.y);
+	
+				}
+		
+			});
+			
+		
+		</script>
+
+<svg viewBox="0 0 800 600" id="welcome">
+  <symbol id="s-text">
+    <text text-anchor="middle"
+          x="50%" y="35%"
+          class="text--line"
+          >
+     Me#Sam
+    </text>
+    <text text-anchor="middle"
+          x="50%"
+          y="68%"
+          class="text--line"
+          >
+    Welcome 
+    </text>
+    
+  </symbol>
+  
+  <g class="g-ants">
+    <use xlink:href="#s-text"
+      class="text-copy"></use>     
+    <use xlink:href="#s-text"
+      class="text-copy"></use>     
+    <use xlink:href="#s-text"
+      class="text-copy"></use>     
+    <use xlink:href="#s-text"
+      class="text-copy"></use>     
+    <use xlink:href="#s-text"
+      class="text-copy"></use>     
+  </g>
+  
+  
+</svg>
+
+
+</body>
+
+</html>
+ 

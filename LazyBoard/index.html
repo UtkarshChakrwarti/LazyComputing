@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<head>
+	<title>1,2,3,...</title>
+	<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+	<div id="head">
+		<h1 class="h_o" style="font-size:45px;  color: white;">&nbsp;Lazy Board</h1></div>
+	<div id="container">
+		<div id="play">
+			<br>&nbsp;&nbsp;&nbsp;
+			<button id="A">1</button>&nbsp;
+			<button id="B">2</button>&nbsp;
+			<button id="C">3</button>&nbsp;
+			<button id="D">4</button>&nbsp;
+			<button id="E">5</button>&nbsp;
+			<button id="F">6</button>&nbsp;
+			<button id="G">7</button>&nbsp;
+			<button id="H">8</button>&nbsp;
+			<button id="I">9</button>&nbsp;
+			<button id="J">0</button>
+		</div>
+		<canvas id="canvas"></canvas>
+		<video id="video" loop preload autoplay muted></video>
+		<div id="over" style="padding:100px;">
+			<h2 class="h_o">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tracking Area ... <b>&uarr;</b><br><br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Output... <b>&darr;</b></h2>
+			<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input id="num" type="textarea">
+			<br>
+		</div>
+		<script src="main.js"></script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+
+
+
+
+		<script>
+
+
+ var zero = function() {document.getElementById('num').value = 0;};
+ var one = function() {document.getElementById('num').value = 1;};
+ var two = function() {document.getElementById('num').value = 2;};
+ var three = function() {document.getElementById('num').value = 3;};
+ var four = function() {document.getElementById('num').value = 4;};
+ var five = function() {document.getElementById('num').value = 5;};
+ var six = function() {document.getElementById('num').value = 6;};
+ var seven = function() {document.getElementById('num').value = 7;};
+ var eight = function() {document.getElementById('num').value = 8;};
+ var nine = function() {document.getElementById('num').value = 9;};
+ var ten = function() {document.getElementById('num').value = 10;};
+
+	
+
+
+				if (annyang) {
+			  // Let's define our first command. First the text we expect, and then the function it should call
+			  var commands = {
+				'zero':  zero,
+				'one':   one ,
+      			'two':   two,
+      			'three':   three ,
+      			'four': four ,
+				  'five':  five,
+				  'six': six ,
+				  'seven': seven ,
+				  'eight':  eight,
+				  'nine':  nine,
+				  'ten': ten,
+
+			  };
+			
+			  // Add our commands to annyang
+			  annyang.addCommands(commands);
+			
+			  // Start listening. You can call this here, or attach this call to an event, button, etc.
+			  annyang.start();
+			}
+		</script>
+	</div>
+</body>

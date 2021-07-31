@@ -1,0 +1,1229 @@
+
+<html >
+    <head>
+    
+        <title>LazyText</title>
+        <meta charset="utf-8">
+  
+        <meta  name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
+    
+        <script src="js/jquery-latest.min.js"></script>
+        <script src="js/jquery.menu.js"></script>
+        <link   href="css/menu.css" rel="stylesheet" type="text/css" />
+        <link   href="css/W3.css" rel="stylesheet" type="text/css" />
+        <link   rel="stylesheet" href="js/basicContext.min.css">
+        <link   rel="stylesheet" href="js/default.min.css">
+        <script src="js/basicContext.min.js"></script>
+        <script src="js/utext.js"></script>
+        <script src="js/tidy.js"></script>
+        <script type="text/javascript" src="js/osk.js"></script>
+
+       <!--<script type="text/javascript" src="js/webcam.js"></script>
+        <link type="text/css" rel="stylesheet" href="js/bcPaint.css"/>
+        <script type="text/javascript" src="js/bcPaint.js"></script>--> 
+
+        <link href="type.png" rel="icon" type="image/ico">
+      
+    
+    
+    
+        
+    
+        
+    </head>
+    
+    <body onload="loadVoices()">
+    
+    
+    
+    <div id="menu-bar" >
+                <ul class="main-menu">
+                    <li>
+                        File
+                        <ul>
+                              
+                            <li id="new"onclick="document.getElementById('id00').style.display='block'"> New</li> 
+                            <li class="separator"></li>
+                            <li id="open" onclick="document.getElementById('id01').style.display='block'">Open </li> 
+                            <li id="save" onclick="document.getElementById('id02').style.display='block'"> Save </li> 
+    
+                           
+                            <li class="separator"></li>
+                            <!--<li onclick="printElem();"> Print</li>--> 
+                            <li onclick="location.href='mailto:Email address ?body='+document.getElementById('rte').textContent">Mail</li>
+                            
+                            <!--<li onclick="document.getElementById('id03').style.display='block'"> Exit </li> -->
+                        </ul>
+                    </li>
+                    <li>
+                            Edit
+                            <ul>
+                                <li onclick="document.getElementById('undo').click();">Undo</li>
+                                <li onclick="document.getElementById('redo').click();">Redo</li>
+                                <li class="separator"></li>
+                                <li onclick="document.getElementById('cut').click();">Cut</li>
+                                <li onclick="document.getElementById('copy').click();">Copy</li>
+                                <li onclick="document.getElementById('paste').click();">Paste</li>
+                                <li  id="select">Select All</li>
+                                <li class="separator"></li>
+                                <li><a onclick="document.getElementById('find').click();txtf.focus();">Find<span></span></a></li>
+                                <li><a onclick="document.getElementById('find').click();txtr.focus();">Replace<span></span></a></li>
+                                <li class="separator"></li>
+                                <li><a onclick="document.getElementById('clearform').click();">Clean<span></span></a></li>
+                                <li><a onclick="document.getElementById('clear').click();">Delete<span></span></a></li>
+                               
+                            </ul>
+                    </li>
+                    <li>
+                        View
+                        <ul>
+                        <li><a onclick="document.getElementById('sor').click();rte.focus();">Source</a></li>
+                        <li><a  onclick="getElementById('cbr').click();readmode();">Read Mode </a></li>
+                        <li><a onclick="document.getElementById('fscreen').click();rte.focus();">FullScrean</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                            Format
+                            <ul>
+                                    <li><a onclick="document.getElementById('bold').click();">Bold</a> </li>
+                                    <li><a onclick="document.getElementById('italic').click();">Italic</a></li>
+                                    <li><a onclick="document.getElementById('underline').click();">Underline</a></li>
+                                    <li><a onclick="document.getElementById('strikeThrough').click();">StrikeThrough</a></li>
+                                    <li><a onclick="document.getElementById('subscript').click();">Subscript</a></li>
+                                    <li><a onclick="document.getElementById('superscript').click();">Superscript</a></li>
+                                    <li class="separator"></li>
+                                        <li>
+                                           Heading
+                                         <ul>
+                                               <li>
+                                                <li><a id="a" onclick=" ">1</a></li>
+                                                <li><a id="b"onclick=" ">2</a></li>
+                                                <li><a id="c"onclick=" ">3</a></li>
+                                                <li><a id="d"onclick=" ">4</a></li>
+                                                <li><a id="e"onclick=" ">5</a></li>
+                                                <li><a id="f"onclick=" ">6</a></li>
+                                               </li>
+                                           </ul>
+                                        </li>
+                                    <li class="separator"></li>
+                                    <li><a onclick="document.getElementById('justifyLeft').click();">Left</a></li>
+                                    <li><a onclick="document.getElementById('justifyRight').click();">Right</a></li>
+                                    <li><a onclick="document.getElementById('justifyCenter').click();">Centre</a></li>
+                                    <li><a onclick="document.getElementById('justifyFull').click();">Justify</a></li>
+                                    <li class="separator"></li>
+                                    <li><a onclick="document.getElementById('bgcol').style.display='block'">Background<span></span></li>
+                                    <li><a onclick="fontcolor.click();">Font Color<span></span></li>
+                                    <li><a onclick="fontback.click();">Font Background<span></span></li>
+                                    <li class="separator"></li>
+                                    <li><a onclick="document.getElementById('indent').click();">Indent</a></li>
+                                    <li><a onclick="document.getElementById('outdent').click();">Outdent</a></li>
+                                   
+                              
+                            </ul>
+                        </li>
+                        <li>
+                                Font
+                                <ul>
+                                        <li><a  id="Arial">Arial</a></li>
+                                        <li><a id="Courier">Courier</a></li>
+                                        <li><a id="Calibri">Calibri</a></li>
+                                        <li><a id="Georgia">Georgia</a></li>
+                                        <li><a  id="Tahoma">Tahoma</a></li>
+                                        <li><a  id="Verdana"> Verdana</a></li>
+                                        <li><a  id="Times"> Times New Roman</a></li>
+                                        <li><a  id="Impact">Impact</a></li>
+                                        <li><a  id="Comic">Comic Sans MS</a></li>
+
+                                      
+                                </ul>
+                            </li>
+    
+                            <li>
+                                    Insert
+                                    <ul>
+                                           <!--<li><a id="liim"onclick="document.getElementById('image').style.display='block'">Image<span></span></a></li>
+                                            --> <li><a onclick="table();">Table<span></span></a></li>
+                                            <li><a onclick="createLink.click()">Link<span></span></a></li>
+                                            <li><a onclick="unlink.click()">Unlink<span></span></a></li>
+                                            <li><a onclick="insertHorizontalRule.click()">Hr Line<span></span></a></li>
+                                            <li><a onclick="insertUnorderedList.click();">Bullet<span></span></a></li>
+                                            <li><a onclick="insertOrderedList.click();">Number<span></span></a></li>
+                                            <li><a onclick="date();">Day Log<span></span></a></li>
+                                            <li><a onclick="document.getElementById('emo').style.display = 'block';">Emojis<span></span></a></li>
+                                           
+                                    </ul>
+                                </li>
+                            
+    
+                        <li>
+                             Tools
+                                  <ul>
+                                <li><a onclick="document.getElementById('calci').style.display='block';">Calculator<span></span></a></li>
+                                    <!-- <li><a onclick=" ">Stream<span></span></a></li>-->
+                                    <li><a onclick="document.getElementById('stt').style.display = 'block';">STT<span></span></a></li>
+                                <li><a onclick="document.getElementById('bro').style.display = 'block';">Word Browser<span></span></a></li>
+                                <li onclick="document.getElementById('tts').style.display = 'block';">TTS</li>
+                                <li><a  onclick="document.getElementById('osk').style.display='block';">OSK<span></span></a></li>
+                               <!--<li><a onclick="change();">Digital Sign<span></span></a></li>--> 
+                                <!--<li><a onclick="document.getElementById('cap').style.display='block';prime();" >Quick Pic<span></span></a></li>-->
+                                          
+
+                            </ul>
+                        </li>
+                        <li>
+                               
+    
+                </ul><!-- end mainmenu -->        
+            </div>
+    
+    
+    
+    
+    
+    
+    
+            <!-- icon Bar-->
+            <div id="icon-bar" >
+               
+                  
+                      
+                        
+    <!-- <button id=""></button>-->
+                         <button  id="bold" title="Bold"onclick="getElementById('cb1').click();" class=" w3-button w3-Blue" style="background:url('images/bold.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         <input type="checkbox" id="cb1" value="">
+                         <label for="cb1"style="postition:absolute;display:inline;">
+                        </label>
+                        
+                         <button id="italic" title="Italic"onclick="getElementById('cb2').click();"class=" w3-button w3-Blue" style="background:url('images/italic.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         <input type="checkbox" id="cb2" value="">
+                         <label for="cb2"style="postition:absolute;display:inline;">
+                        </label>
+    
+                         <button id="underline"title="Underline"onclick="getElementById('cb3').click()"class=" w3-button w3-Blue" style="background:url('images/underline.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         <input type="checkbox" id="cb3" value="">
+                         <label for="cb3"style="postition:absolute;display:inline;">
+                        </label>
+                        
+                         <button id="strikeThrough"title="StrikeThrough" onclick="getElementById('cb4').click()" class=" w3-button w3-Blue"style="background:url('images/strike.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         <input type="checkbox" id="cb4" value="">
+                         <label for="cb4"style="postition:absolute;display:inline;">
+                        </label>
+                         <button title="Subscript" id="subscript"class=" w3-button w3-Blue"style="background:url('images/subs.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                        <button title="Superscript"id="superscript"class=" w3-button w3-Blue"style="background:url('images/super.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+    
+    
+    
+    
+    
+    
+    <!--font size-->
+                        <button title="Headings"  onclick="document.getElementById('id05').style.display='block'" class=" w3-button w3-teal" style="background:url('images/fsize.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                       
+    
+    
+    
+    
+    <!--font face--> 
+                        <button title="Fonts"   onclick="document.getElementById('id06').style.display='block'" class=" w3-button w3-teal" style="background:url('images/font.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                           <!-- Font                Arial,            Courier,             Calibri,              Georgia,               Tahoma,         -->
+                       
+                       
+                       
+                       
+    <!-- Font color   19 colors   -->    
+                        <button  id="fontcolor" title="Font color"onclick="document.getElementById('id07').style.display='block'" class=" w3-button w3-teal" style="background:url('images/textc.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                        
+    
+    
+      <!-- Font back 19 colors-->
+                        <button  id="fontback" title="Font background"onclick="document.getElementById('id08').style.display='block'"class=" w3-button w3-teal" style="background:url('images/textb.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                       
+                 
+    
+      <!-- Clear Formatting-->
+                        <button  title="clear Formatting" id="clearform" class=" w3-button w3-Indigo"style="background:url('images/clear.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                        
+     <!-- del-->
+    
+                        <button title="delete"  id="clear"class=" w3-button w3-Indigo"style="background:url('images/del.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                       
+                       
+                       
+                       
+                       
+    <!--file-->
+                        <button  title ="New File "onclick="getElementById('new').click();"class=" w3-button w3-Indigo"style="background:url('images/new.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                       
+                        <button   title ="Open File "onclick="getElementById('open').click();" class=" w3-button w3-Indigo"style="background:url('images/open.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button></button> 
+                        <button  title ="Save File "onclick="getElementById('save').click();"class=" w3-button w3-Indigo"style="background:url('images/save.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                        
+                       
+                        <!-- <button title="Print File"onclick="printElem();"class=" w3-button w3-Indigo"style="background:url('images/print.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                      -->
+                         <button title=" Email File" onclick="location.href='mailto:Email address ?body='+document.getElementById('rte').textContent"class=" w3-button w3-Indigo"style="background:url('images/mail.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                        
+    
+    
+    
+     <!-- cut Copy Paste Main-->
+                         <button title="Cut" id="cut"onclick="cut();"class=" w3-button w3-Indigo"class=" w3-button w3-Indigo" style="background:url('images/cut.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         <button title="Copy "id="copy"onclick="copy();"class=" w3-button w3-Indigo"class=" w3-button w3-Indigo" style="background:url('images/copy.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         <button title="Paste"id="paste"onclick="paste();"class=" w3-button w3-Indigo"class=" w3-button w3-Indigo" style="background:url('images/paste.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         <button title="Undo"id="undo"class=" w3-button w3-Indigo" style="background:url('images/undo.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         <button title="Redo"id="redo"class=" w3-button w3-Indigo" style="background:url('images/redo.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+      <!-- cut Copy Paste Main end-->                    
+                         
+                         <button title="View Source" id="sor" onclick="getElementById('cb5').click();source();"class=" w3-button w3-Indigo"style="background:url('images/code.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         <input type="checkbox" id="cb5" value="">
+                         <label for="cb5"style="postition:absolute;display:inline;">
+                        </label>
+    
+                         <button title="Fullscreen" id="fscreen" onclick="getElementById('cb6').click();toggleFullscreen();rte.focus();"class=" w3-button w3-Indigo"style="background:url('images/fullscreen.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         <input type="checkbox" id="cb6" value="">
+                         <label for="cb6"style="postition:absolute;display:inline;">
+                        </label>
+    <!-- text Alignment--> 
+                         <button title="Left"  id="justifyLeft"class=" w3-button w3-Indigo" style="background:url('images/left.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         <button title="Centre" id="justifyCenter"class=" w3-button w3-Indigo" style="background:url('images/center.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         <button title="Right" id="justifyRight"class=" w3-button w3-Indigo" style="background:url('images/right.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         <button title="Justify" id="justifyFull"class=" w3-button w3-Indigo" style="background:url('images/just.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                       
+                         <button title="Indent" id="indent"class=" w3-button w3-Indigo" style="background:url('images/righti.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         <button title="Outdent"id="outdent"class=" w3-button w3-Indigo" style="background:url('images/lefti.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+      <!-- Alignment end-->  
+                         
+                         
+                         
+ <!-- Bullet And Numbering-->                       
+                         <button title="Unordered List"id="insertUnorderedList"class=" w3-button w3-Indigo" style="background:url('images/bullet.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         <button  title="Ordered List"id="insertOrderedList"class=" w3-button w3-Indigo" style="background:url('images/numbering.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         
+                         
+                         <button  title="HR Line"id="insertHorizontalRule"class=" w3-button w3-Indigo" style="background:url('images/hr.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         <button title="Create Link"id="createLink"class=" w3-button w3-Blue"style="background:url('images/link.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         <button title="Remove Link"id="unlink"class=" w3-button w3-Blue"style="background:url('images/broke.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         
+ <!-- image   
+                         <input  type="file"  style="visibility: hidden;position:absolute;width:0px;height:0px;left:0px;top:-10px;"  placeholder ="image insertion"id="files" name="files[]" multiple />
+                         <button title="Images" onclick="document.getElementById('files').click();"class=" w3-button w3-Blue"style="background:url('images/img.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+            s-->           
+ <!-- day log-->   
+                         <button onclick="date();"title="Day Log" class=" w3-button w3-Blue"style="background:url('images/log.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                      
+<!-- find And Replace-->
+                           <button title="Find" id="find" onclick="document.getElementById('id04').style.display='block';txtf.focus();" class=" w3-button w3-Blue"style="background:url('images/find.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                           <button  title="Replace"onclick="document.getElementById('id04').style.display='block';txtr.focus();"class=" w3-button w3-Blue"style="background:url('images/replace.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+ <!-- table-->
+                         
+                         <button class=" w3-button w3-Blue"onclick="table();" title="Table"style="background:url('images/table.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+  <!-- emojis-->
+
+                        <button class=" w3-button w3-Blue"onclick="document.getElementById('emo').style.display = 'block';"title="emojis"style="background:url('images/emoji.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                        
+                        
+                        
+   <!-- TT Speech-->                       
+                        <button title="Text To Speech" class=" w3-button w3-Blue"onclick="document.getElementById('tts').style.display = 'block';"style="background:url('images/speak.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+
+
+
+
+<!-- On screen Keyboard-->       
+                         <button class=" w3-button w3-Blue"onclick="document.getElementById('osk').style.display='block';" title="On Screen Keyboard"style="background:url('images/keyboard.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         
+<!-- Special Calci-->  
+                         <button class=" w3-button w3-Blue" onclick="document.getElementById('calci').style.display='block';"title="Calculator" style="background:url('images/calculator.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                        
+                        
+                        
+                        
+          <!--          <button class=" w3-button w3-Blue"style="background:url('images/quick.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+          -->              
+                        
+   <!-- Read Mode-->                          
+                                              
+                         <button class=" w3-button w3-Blue"onclick="getElementById('cbr').click();readmode();"title="Read Mode"style="background:url('images/dict.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                         <input type="checkbox" id="cbr" value="">
+                         <label for="cbr"style="postition:absolute;display:inline;">
+                        </label>
+                        
+ <!-- Capture images                       
+                        
+                         <button class=" w3-button w3-Blue" onclick="document.getElementById('cap').style.display='block';prime();"title="Capture Image"style="background:url('images/quickpic.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+  -->   
+                        
+                        
+ <!-- Digital Sign      
+                         <button class=" w3-button w3-Blue"onclick="change();"title="Digital Sign"style="background:url('images/sign.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+                       
+                   -->      
+                       
+                       
+   <!-- Browse Text-->                       
+                         <button class=" w3-button w3-Blue"onclick="document.getElementById('bro').style.display = 'block';"title="Word Browser"style="background:url('images/stream.png');background-size:70% 70%;background-position:center;background-repeat:no-repeat;width:30px;height:30px;"></button>
+            
+            
+
+
+
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+                        </div>
+           
+             <!-- icon Bar finished-->
+    
+    
+             <!-- ruler area-->
+             <div id="ruler"></div>
+             <!-- ruler finished-->
+    
+    
+    <!--page area-->
+         <div id="divback">
+                    
+               
+              
+                    <div  id="rte"  class="plaintext" contenteditable="true"  onkeypress="document.getElementById('counter').textContent=document.getElementById('rte').textContent"></div>
+                    <div class="hide"id="book" contenteditable="true"> </div>
+                    <div class="hide"id="tcode" contenteditable="true"> </div>
+          
+              
+                   
+    
+          </div>
+    
+    <!--page area finished-->
+      
+    <div id="footer" dir="rtl">
+      &nbsp;LAZY COMPUTING
+            
+              
+    </div>
+     
+       <!-- context menu-->
+       
+        <!-- context menu ends-->
+    
+    <!-- over lay-->
+    <div id=over class="hide"style="">
+    
+        <h1><br></h1>
+        <center> <h1><font color=white>Please Resize To atleast Min Height and Min Width</font></h1></center>
+    </div>
+    
+    <!-- over lay ends here
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////            All Prompts Div Area Containers      //////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  all prompts-->
+    
+    
+    
+    
+    <!-- New Doc -->
+     <div id="id00" class="w3-modal"style="z-index:100;">
+        <div class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 10px;width:300px;height:200px;">
+        <center><br><br>
+         <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:rgba(160, 7, 7, 0.726);">
+        New File
+        </h1> <br> <br>     
+        <button class="db" onclick="document.getElementById('rte').innerHTML='';document.getElementById('id00').style.display = 'none';rte.focus();">Yes</button>
+        <button class="dbr" onclick="document.getElementById('id00').style.display = 'none'; rte.focus();">Cancel</button>
+        </center>
+        </div>
+        </div>
+    
+    
+    
+    
+        <!-- Open html -->
+       <div id="id01" class="w3-modal"style="z-index:100;" >
+        <div class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 10px;width:300px;height:200px;">
+        <center><br><br>
+         <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:rgba(160, 7, 7, 0.726);">
+         Open File
+        </h1> <br> <br>     
+        <input  class="hide" type="file" id="fileToLoad" placeholder="choose file" onchange="loadFileAsText();document.getElementById('id01').style.display = 'none';rte.focus();"style="border:1px solid #555;">
+        <button class="db" onclick="document.getElementById('fileToLoad').click();">Select</button>
+        <button class="dbr" onclick="document.getElementById('id01').style.display = 'none'; rte.focus();">Cancel</button>
+        </center>
+        </div>
+        </div>
+    
+    
+    
+    
+    <!-- Save AS html -->
+          <div id="id02" class="w3-modal"style="z-index:100;" >
+                  <div class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 10px;width:300px;height:200px;">
+                  <center><br>
+                  <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:rgba(7, 86, 160, 0.726);">
+                   Save HTML
+                  </h1> 
+                  <input type="text" class="w3-input w3-border " id="inputFileNameToSaveAs" style="width:80%;"placeholder="Save File As .html">
+                  <br>
+                  <button class="db"onclick="saveTextAsFile();document.getElementById('id02').style.display = 'none';rte.focus();">Save</button>
+                  <button class="dbr" onclick="document.getElementById('id02').style.display = 'none';rte.focus(); ">Cancel</button>
+                 </center>
+                 </div>
+                 </div>
+    
+    
+    
+    
+    <!-- Exit -->
+         <div id="id03" class="w3-modal"style="z-index:100;" >
+            <div class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 10px;width:300px;height:200px;">
+            <center><br>
+            <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:orangered">
+             Exit !
+            </h1> 
+            
+            <br>
+            <button class="dbr"onclick="window.close();">Exit</button>
+            <button class="db" onclick="document.getElementById('id03').style.display = 'none';rte.focus(); ">Cancel</button>
+           </center>
+           </div>
+           </div>
+    
+    
+    
+    
+    
+    
+    
+    <!-- find and replace -->
+          <div id="id04" class="w3-modal"style="z-index:100;" >
+            <div class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 10px;width:300px;height:350px;">
+            <center><br>
+            <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:orangered">
+             Find or Replace 
+            </h1> 
+            
+            <br>
+            <input type="text" class="w3-input w3-border " id="txtf" style="width:80%;"placeholder="Find ">
+            <br>
+            <input type="text" class="w3-input w3-border " id="txtr" style="width:80%;"placeholder="Replace">
+            <br>
+            <button class="dbr"onclick="replaceall();rte.focus();">Replace All</button>
+                <button class="db" onclick=" find();rte.focus();">Find</button>
+              
+            <button class="db" style="width:100px;" onclick="document.getElementById('id04').style.display = 'none';rte.focus();">Hide</button>
+            <button class="dbr"onclick="replace();rte.focus();">Replace</button>
+            </center>
+           </div>
+           </div>
+    
+    
+    
+    
+    
+    
+     <!--header Size-->
+              <div id="id05" class="w3-modal"style="z-index:100;" >
+                <div class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 10px;width:500px;height:250px;">
+                <center><br>
+                <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:orangered">
+                 Headings
+                </h1> 
+                
+                <br>
+                
+                <button class="db"style="width:35px" onclick="a.click();">1</button>
+                <button class="db"style="width:35px" onclick=" b.click();">2</button>
+                <button class="db"style="width:35px" onclick="c.click(); ">3</button>
+                <button class="db"style="width:35px" onclick="d.click(); ">4</button>
+                <button class="db"style="width:35px" onclick="e.click(); ">5</button>
+                <button class="db"style="width:35px" onclick="f.click(); ">6</button>
+            
+                  
+                <button class="dbr" style="width:100px;" onclick="document.getElementById('id05').style.display = 'none';rte.focus();">Hide</button>
+             
+                </center>
+               </div>
+               </div>
+    
+    
+    
+    <!--Fonts-->
+              <div id="id06" class="w3-modal"style="z-index:100;" >
+                <div class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 10px;width:600px;height:350px;">
+                <center><br>
+                <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:orangered">
+                 Fonts
+                </h1> 
+                
+                <br>
+                
+                <button class="db"style="width:100px"  onclick="Arial.click(); ">Arial</button>
+                <button class="db"style="width:100px"  onclick="Courier.click(); ">Courier</button>
+                <button class="db"style="width:100px"  onclick="Calibri.click(); ">Calibri</button>
+                <button class="db"style="width:100px"  onclick="Georgia.click(); ">Georgia</button>
+                <button class="db"style="width:100px"  onclick="Tahoma.click(); ">Tahoma</button>
+                <button class="db"style="width:100px"  onclick="Verdana.click(); ">Verdana</button>
+                <button class="db"style="width:100px"  onclick="Times.click(); ">Times</button>
+                <button class="db"style="width:100px"  onclick="Impact.click(); ">Impact</button>
+                <button class="db"style="width:100px"  onclick="Comic.click(); ">Comic</button>
+              
+                <br>  
+                <br>                    
+                <button class="dbr" style="width:100px;" onclick="document.getElementById('id06').style.display = 'none';rte.focus();">Hide</button>
+             
+                </center>
+               </div>
+               </div>
+          
+    <!--Font color-->
+    <div id="id07" class="w3-modal"style="z-index:100;" >
+        <div class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 10px;width:500px;height:300px;">
+        <center><br>
+        <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:orangered">
+         Font Color
+        </h1> 
+        
+        <br>
+      
+        
+        <button class="fcol" style="background-color: red;"id="fr" ></button>&nbsp;    <button class="fcol" style="background-color: green;"id="fg" ></button>&nbsp;
+        <button class="fcol" style="background-color: blue;" id="fb"></button>&nbsp;    <button class="fcol"  style="background-color:black;"id="fbl"></button>&nbsp;
+        <button class="fcol" style="background-color: brown;"id="fbr" onclick=" "></button>&nbsp;    <button class="fcol" style="background-color: yellow;"id="fy" onclick=" "></button>&nbsp;
+        <button class="fcol"  style="background-color:orange;"id="fo"onclick=" "></button>&nbsp;    <button class="fcol" style="background-color: purple;"id="fp" onclick=" "></button>&nbsp;
+        <button class="fcol"  style="background-color:white;"id="fw"onclick=" "></button>&nbsp;    <button class="fcol" style="background-color: lightgreen;" id="flg"onclick=" "></button>&nbsp;
+        <button class="fcol" style="background-color: lightblue;"id="flb" onclick=" "></button>&nbsp;    <button class="fcol"  style="background-color:cyan;"id="fc"onclick=" "></button>&nbsp;
+        <button class="fcol" style="background-color: magenta;" id="fm"onclick=" "></button>&nbsp;    <button class="fcol" style="background-color: lightgray;" id="fli"onclick=" "></button>&nbsp;
+        <button class="fcol" style="background-color: gray;" id="fgr"onclick=" "></button>&nbsp;    <button class="fcol" style="background-color: orangered;" id="for"onclick=" "></button>&nbsp;
+        <button class="fcol"  style="background-color:pink;"id="fpi"onclick=" "></button>&nbsp;    <button class="fcol" style="background-color: silver;" id="fsi"onclick=" "></button>&nbsp;
+        <button class="fcol"  style="background-color:indigo;"id="fin"onclick=" "></button>&nbsp;
+      
+    
+        
+        <br> 
+        <br>                    
+        <button class="dbr" style="width:100px;" onclick="document.getElementById('id07').style.display = 'none';rte.focus();">Hide</button>
+     
+        </center>
+       </div>
+       </div>
+    
+     <!--Font back-->
+     <div id="id08" class="w3-modal"style="z-index:100;" >
+        <div class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 10px;width:500px;height:300px;">
+        <center><br>
+        <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:orangered">
+         Font Background
+        </h1> 
+        
+        <br>
+      
+        
+        <button class="fcol" style="background-color: red;"id="br" ></button>&nbsp;    <button class="fcol" style="background-color: green;"id="bg" ></button>&nbsp;
+        <button class="fcol" style="background-color: blue;" id="bb"></button>&nbsp;    <button class="fcol"  style="background-color:black;"id="bbl"></button>&nbsp;
+        <button class="fcol" style="background-color: brown;"id="bbr" onclick=" "></button>&nbsp;    <button class="fcol" style="background-color: yellow;"id="by" onclick=" "></button>&nbsp;
+        <button class="fcol"  style="background-color:orange;"id="bo"onclick=" "></button>&nbsp;    <button class="fcol" style="background-color: purple;"id="bp" onclick=" "></button>&nbsp;
+        <button class="fcol"  style="background-color:white;"id="bw"onclick=" "></button>&nbsp;    <button class="fcol" style="background-color: lightgreen;" id="blg"onclick=" "></button>&nbsp;
+        <button class="fcol" style="background-color: lightblue;"id="blb" onclick=" "></button>&nbsp;    <button class="fcol"  style="background-color:cyan;"id="bc"onclick=" "></button>&nbsp;
+        <button class="fcol" style="background-color: magenta;" id="bm"onclick=" "></button>&nbsp;    <button class="fcol" style="background-color: lightgray;" id="bli"onclick=" "></button>&nbsp;
+        <button class="fcol" style="background-color: gray;" id="bgr"onclick=" "></button>&nbsp;    <button class="fcol" style="background-color: orangered;" id="bor"onclick=" "></button>&nbsp;
+        <button class="fcol"  style="background-color:pink;"id="bpi"onclick=" "></button>&nbsp;    <button class="fcol" style="background-color: silver;" id="bsi"onclick=" "></button>&nbsp;
+        <button class="fcol"  style="background-color:indigo;"id="bin"onclick=" "></button>&nbsp;
+      
+    
+        <br>  
+           <br>                    
+        <button class="dbr" style="width:100px;" onclick="document.getElementById('id08').style.display = 'none';rte.focus();">Hide</button>
+     
+        </center>
+       </div>
+       </div>
+         
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!--Background Color-->
+    <div id="bgcol" class="w3-modal"style="z-index:100;" >
+        <div class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 10px;width:500px;height:300px;">
+        <center><br>
+        <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:orangered">
+         Background Color
+        </h1> 
+        
+        <br>
+        <br>
+            <input type="text" class="w3-input w3-border " id="bgcoltxt" style="width:80%;"placeholder="Set Page BackColor ">
+            <br>
+          
+            <br>
+            <button class="db"onclick="apply();rte.focus();">Apply</button>
+          
+                             
+            <button class="dbr" style="width:100px;" onclick="document.getElementById('bgcol').style.display = 'none';rte.focus();">Hide</button>
+        <br>
+        <button class="dbr" style="width:100px;" onclick=" document.getElementById('rte').style.backgroundColor='white'; 
+        document.getElementById('ws').style.backgroundColor='white';document.getElementById('bgcol').style.display = 'none';rte.focus();
+        ">Reset</button>
+     
+        </center>
+       </div>
+       </div>
+         
+    
+    
+    <!-- insert Image -->
+        <div id="image" class="w3-modal"style="z-index:100;" >
+                <div class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 10px;width:400px;height:300px;">
+                <center><br><br>
+                 <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:rgba(160, 7, 7, 0.726);">
+                 Insert Multiple Images
+                </h1> <br> <br>     
+                <input  class="hide" type="file"id="files" name="files[]" multiple />
+                <button class="db" onclick="document.getElementById('files').click();document.getElementById('image').style.display = 'none';rte.focus();">Choose</button>
+                <button class="dbr" onclick="document.getElementById('image').style.display = 'none'; rte.focus();">Cancel</button>
+              
+                </center>
+                </div>
+                </div>
+            
+            
+          
+                
+    
+    <!--table case-->
+    
+    
+    <!-- find and replace -->
+    <div id="tab" class="w3-modal"style="z-index:100;" >
+            <div class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 10px;width:300px;height:350px;">
+            <center><br>
+            <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:orangered">
+            Insert Table
+            </h1> 
+            
+            <br>
+            <input type="text" class="w3-input w3-border " id="tro" style="width:80%;"placeholder="Row">
+            <br>
+            <input type="text" class="w3-input w3-border " id="tco" style="width:80%;"placeholder="Coloumn">
+            <br>
+            <button class="db"onclick="proceed();rte.focus();">insert</button>
+                      
+            <button class="dbr" style="width:100px;" onclick="document.getElementById('tab').style.display = 'none';rte.focus();">Hide</button>
+           
+            </center>
+           </div>
+           </div>
+    
+        
+<!-- insert Link -->
+    <div id="linked" class="w3-modal"style="z-index:100;" >
+        <div class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 10px;width:300px;height:300px;">
+        <center><br>
+        <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:orangered">
+        Insert Link
+        </h1> 
+        
+        <br>
+        <input type="text" class="w3-input w3-border " id="hl" style="width:80%;"placeholder="Address">
+        <br>
+       
+        <br>
+        <input type="text" class="w3-input w3-border " id="ht" style="width:80%;"placeholder="Title">
+        <br>
+       
+        <button class="db"onclick="document.getElementById('linked').style.display = 'none';rte.focus();" id="hll">Insert</button>
+                  
+        <button class="dbr" style="width:100px;" onclick="document.getElementById('linked').style.display = 'none';rte.focus();">Hide</button>
+       
+        </center>
+       </div>
+       </div>
+
+              
+<!-- capture -->
+
+ <div id="cap" class="w3-modal"style="z-index:100;" >
+    <div class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 10px;width:400px;height:450px;">
+    <center><br>
+    <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:orangered">
+            Insert Quick Pic
+        </h1> 
+            <div id="my_camera"></div>
+            <input class="db" type=button value="Insert" onClick="take_snapshot()">
+
+          
+  
+    <button class="dbr" style="width:100px;" onclick="document.getElementById('cap').style.display = 'none';camf = 0;Webcam.reset();">Close</button>
+    <button class="dbr" style="width:100px;" onclick="document.getElementById('cap').style.display = 'none';rte.focus();">Hide</button>
+   
+    </center>
+   </div>
+   </div>
+
+
+
+
+
+
+
+   <!-- on screen key board -->
+
+ <div id="osk" class="w3-modal"style="z-index:100;opacity:0.9;" >
+        <div class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 10px;width: 688px;height:350px;z-index:-1;bottom:0px;">
+       <h1  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:orangered">On Screen Key Board</h1>
+            <center>
+                <br>
+                    <button class="dbr" style="width:100px;" onclick="document.getElementById('osk').style.display = 'none';">Hide</button>
+                     <br>
+                <div id="keycon">
+                     
+                        <ul id="keyboard">
+                            <li class="symbol"><span class="off">`</span><span class="on">~</span></li>
+                            <li class="symbol"><span class="off">1</span><span class="on">!</span></li>
+                            <li class="symbol"><span class="off">2</span><span class="on">@</span></li>
+                            <li class="symbol"><span class="off">3</span><span class="on">#</span></li>
+                            <li class="symbol"><span class="off">4</span><span class="on">$</span></li>
+                            <li class="symbol"><span class="off">5</span><span class="on">%</span></li>
+                            <li class="symbol"><span class="off">6</span><span class="on">^</span></li>
+                            <li class="symbol"><span class="off">7</span><span class="on">&amp;</span></li>
+                            <li class="symbol"><span class="off">8</span><span class="on">*</span></li>
+                            <li class="symbol"><span class="off">9</span><span class="on">(</span></li>
+                            <li class="symbol"><span class="off">0</span><span class="on">)</span></li>
+                            <li class="symbol"><span class="off">-</span><span class="on">_</span></li>
+                            <li class="symbol"><span class="off">=</span><span class="on">+</span></li>
+                            <li class="delete lastitem">delete</li>
+                            <li class="tab">tab</li>
+                            <li class="letter">q</li>
+                            <li class="letter">w</li>
+                            <li class="letter">e</li>
+                            <li class="letter">r</li>
+                            <li class="letter">t</li>
+                            <li class="letter">y</li>
+                            <li class="letter">u</li>
+                            <li class="letter">i</li>
+                            <li class="letter">o</li>
+                            <li class="letter">p</li>
+                            <li class="symbol"><span class="off">[</span><span class="on">{</span></li>
+                            <li class="symbol"><span class="off">]</span><span class="on">}</span></li>
+                            <li class="symbol lastitem"><span class="off">\</span><span class="on">|</span></li>
+                            <li class="capslock">caps lock</li>
+                            <li class="letter">a</li>
+                            <li class="letter">s</li>
+                            <li class="letter">d</li>
+                            <li class="letter">f</li>
+                            <li class="letter">g</li>
+                            <li class="letter">h</li>
+                            <li class="letter">j</li>
+                            <li class="letter">k</li>
+                            <li class="letter">l</li>
+                            <li class="symbol"><span class="off">;</span><span class="on">:</span></li>
+                            <li class="symbol"><span class="off">'</span><span class="on">&quot;</span></li>
+                            <li class="return">Enter</li>
+                            <li class="left-shift">shift</li>
+                            <li class="letter">z</li>
+                            <li class="letter">x</li>
+                            <li class="letter">c</li>
+                            <li class="letter">v</li>
+                            <li class="letter">b</li>
+                            <li class="letter">n</li>
+                            <li class="letter">m</li>
+                            <li class="symbol"><span class="off">,</span><span class="on">&lt;</span></li>
+                            <li class="symbol"><span class="off">.</span><span class="on">&gt;</span></li>
+                            <li class="symbol"><span class="off">/</span><span class="on">?</span></li>
+                            <li class="right-shift lastitem">shift</li>
+                            <li class="space lastitem">&nbsp;</li>
+                        </ul>
+                    </div>
+
+
+
+
+  
+      
+        
+        </center>
+       </div>
+       </div>
+    
+
+
+
+
+
+
+
+<!-- advanced calci-->
+
+
+
+    <div id="calci" class="w3-modal"style="z-index:100;" >
+        
+        
+        <div class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 5px;width:350px;height:440px;">
+        
+                 <h3 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:orangered;position:absolute;left:15px;">
+                  Calculator
+                 </h3> 
+       
+                  <center>
+            <br>
+                 <br>
+                  <br>
+
+      
+                
+                <input type="text" value="" id="display" value="input" size="30"  autocomplete=false  style="width:90%;height:40px;top:0px;background:transparent;outline:none;border:1px solid #555;padding:10px;"autocomplete="false"> 
+            <table border="0" cellspacing="0" align=center cellpadding=0  style="width:90%;border:none;background:transparent;">
+            <tr >
+            <td ><input    type="button" value=" 7 " onclick="display.value+='7';"  class="mem" ></td>
+            <td ><input   type="button" value="8"  onclick="display.value+='8';"   class="mem" ></td>
+            <td ><input   type="button" value="9"onclick="display.value+='9';"    class="mem" ></td>
+            <td ><input   type="button" value="+"onclick="display.value+='+';"   class="mem" ></td>
+            <td ><input   type="button" value="-"onclick="display.value+='-';" class="mem" ></td>
+            </tr>
+            <tr>
+            <td ><input   type="button" value="4"onclick="display.value+='4';"   class="mem" ></td>
+            <td ><input   type="button" value="5"onclick="display.value+='5';"   class="mem" ></td>
+            <td ><input   type="button" value="6"onclick="display.value+='6';"   class="mem" ></td>
+            <td ><input   type="button" value="/"onclick="display.value+='/';"   class="mem" ></td>
+            <td ><input   type="button" value="X"onclick="display.value+='*';"   class="mem" ></td>
+            </tr>
+            <tr>
+            <td ><input   type="button" value="1"onclick="display.value+='1';"   class="mem" ></td>
+            <td ><input   type="button" value="2"onclick="display.value+='2';"   class="mem" ></td>
+            <td ><input   type="button" value="3"onclick="display.value+='3';"   class="mem" ></td>
+            <td ><input   type="button" value="0"onclick="display.value+='0';"   class="mem" ></td>
+            <td ><input   type="button" value="."onclick="display.value+='.';"   class="mem" ></td>
+            </tr>
+            <tr>
+            <td ><input   type="button" value="00"onclick="display.value+='00';"   class="mem" ></td>
+            <td ><input   type="button" value="("onclick="display.value+='(';"   class="mem" ></td>
+            <td ><input   type="button" value=")"onclick="display.value+=')';"   class="mem" ></td>
+            <td ><input  type="button" value="%"onclick="perc()"   class="mem" ></td>
+            <td ><input   type="button" value="±"onclick="display.value=-1*display.value"   class="mem" ></td>
+            </tr>
+            <tr>
+            <td ><input   type="button" value="1/x"onclick="display.value=1/display.value"   class="mem" ></td>
+            <td ><input   type="button" value="√ "onclick=".display.value=Math.sqrt(display.value)"   class="mem" ></td>
+            <td ><input   type="button" value="π"onclick="display.value+='3.142857142857143';"   class="mem" ></td>
+            <td ><button onclick="display.value=display.value*display.value"   class="mem">X<sup>2</sup></button></td>
+            <td ><button onclick="display.value=display.value*display.value*display.value"   class="mem" >X<sup>3</sup></button></td>
+            </tr>
+            <tr>
+            <td ><input   type="button" value="ln"onclick="display.value=Math.log(display.value)"   class="mem" ></td>
+            <td ><input   type="button" value="log"onclick="display.value=Math.log(display.value)/Math.LN10"   class="mem" ></td>
+            <td ><input   type="button" value="exp"onclick="display.value=Math.exp(display.value);"   class="mem" ></td>
+            <td ><button    type="button" value="e^x"onclick="display.value+=Math.E"   class="mem" >e<sup>x</sup></button></td>
+            <td ><button onclick="display.value='';"   class="mem" >C</button></td>
+            </tr>
+            <tr>
+            <td ><input  type="button" value="sin"onclick="display.value=Math.sin(display.value)"   class="mem" ></td>
+            <td ><input   type="button" value="cos"onclick="display.value=Math.cos(display.value)"   class="mem" ></td>
+            <td ><input  type="button" value="tan"onclick="display.value=Math.tan(display.value)"   class="mem" ></td>
+            <td ><input   type="button" value="Del"onclick="deleteChar(display.value)"   class="mem" ></td>
+            <td ><input  type="button" value="="onclick="calc()"   class="mem" ></td>
+            </tr>
+            </table>
+            <table cellpadding="0"  border="0" cellspacing="0">
+            <td><input type="button" value=" M "onclick="me.value=display.value;" class=mem ></td>
+            <td><input  type="button" value="M+"onclick="me.value=eval(me.value)+eval(display.value);"    class=mem ></td>
+            <td><input  type="button" value="M-"onclick="me.value=eval(me.value)-eval(display.value);"    class=mem ></td>
+            <td><input   type="button" value="MR"onclick="display.value=display.value+'('+(me.value)+')'"    class=mem ></td>
+            <td><input type="button" value="MC"onclick="me.value='0';"  class=mem ></td>
+            </tr>
+            </table>
+            <br>
+           <td>
+            <center>
+            <input type="text" value="" id="me"readonly="true" style="height:52px;outline:none;border:1px solid #555;padding:10px;outline:none;"placeholder="Memory">
+             <button  class="dbr"onclick="document.getElementById('calci').style.display = 'none'">Hide</button>
+              </center>
+             </div>
+       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Quick sign mode-->
+
+    <div id="h"class="w3-modal-content w3-animate-bottom w3-left "style="border-radius:10px;
+                                                                        position:absolute;
+                                                                      right:-500px;
+                                                                      bottom:-500px;
+                                                                     background-color:rgb(8, 2, 94,0.7);
+                                                                    z-index:101;
+                                                                      border:1px solid #555;
+                                                                      border-bottom:none;
+                                                                      user-select:none;
+                                                                      width:350px;
+                                                                      height:400px;
+                                                                      -moz-box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.2);
+                                                                      box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.2);
+                                                                      outline: black;user-select: none;
+                                                                      ">
+         <h1  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:white">&nbsp;Digital Sign</h1>
+        &nbsp; <button  class="dbr"onclick="change()">Hide</button>
+        <center>
+        <div id="bcPaint" style="cursor:default;
+                                background-color:#FFF;
+                                z-index:100;
+                                border-radius: 0px;
+                                border:1px solid #555;
+                                width:300px;height:200px;">
+          </div>      
+        
+        </center>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Emoji Picker -->
+
+
+  <div id="emo" class="w3-modal"style="z-index:100;" >
+    <div class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 10px;width:650px;height:400px;opacity:0.8;">
+    <center><br>
+    <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:orangered">
+    Emojis
+    </h1> 
+  
+    <button  class="em"onclick="em=0;emos();" >😁</button>
+     <button class="em"onclick="em=1;emos();" >😂</button>
+     <button class="em"onclick="em=2;emos();" >😃</button>
+     <button class="em"onclick="em=3;emos();" >😄</button>
+     <button class="em"onclick="em=4;emos();" >😅</button> 
+     <button class="em"onclick="em=5;emos();" >😆</button>
+     <button class="em"onclick="em=6;emos();" >😉</button> 
+     <button class="em"onclick="em=7;emos();" >😊</button>
+     <button class="em"onclick="em=8;emos();" >😋</button>
+     <button class="em"onclick="em=9;emos();" >😎</button>
+     <button class="em"onclick="em=10;emos();" >😍</button> 
+     <button class="em"onclick="em=11;emos();" >😘</button>
+     <button class="em"onclick="em=12;emos();" >😗</button>
+     <button class="em"onclick="em=13;emos();" >😙</button>
+     <button class="em"onclick="em=14;emos();" >😚</button>
+     <button class="em"onclick="em=15;emos();" >😪</button>  
+     <button class="em"onclick="em=16;emos();" >😐</button> 
+     <button class="em"onclick="em=17;emos();" >😑</button>
+     <button class="em"onclick="em=18;emos();" >😶</button>
+     <button class="em"onclick="em=19;emos();" >😏</button>
+     <button class="em"onclick="em=20;emos();" >😣</button> 
+     <button class="em"onclick="em=21;emos();" >😥</button>
+     <button class="em"onclick="em=22;emos();" >😮</button>
+     <button class="em"onclick="em=23;emos();" >😯</button>
+     <button class="em"onclick="em=24;emos();" >😫</button> 
+     <button class="em"onclick="em=25;emos();" >😴</button>
+     <button class="em"onclick="em=26;emos();" >😌</button>
+     <button class="em"onclick="em=27;emos();" >😛</button>
+     <button class="em"onclick="em=28;emos();" >😜</button> 
+     <button class="em"onclick="em=29;emos();" >😝</button>
+     <button class="em"onclick="em=30;emos();" >😒</button>
+     <button class="em"onclick="em=31;emos();" >😓</button>
+     <button class="em"onclick="em=32;emos();" >😔</button>
+     <button class="em"onclick="em=33;emos();" >😕</button>
+     <button class="em"onclick="em=34;emos();" >😲</button>
+     <button class="em"onclick="em=35;emos();" >😖</button>
+     <button class="em"onclick="em=36;emos();" >😞</button> 
+     <button class="em"onclick="em=37;emos();" >😟</button>
+     <button class="em"onclick="em=38;emos();" >😤</button>
+     <button class="em"onclick="em=39;emos();" >😢</button>
+     <button class="em"onclick="em=40;emos();" >😭</button>
+     <button class="em"onclick="em=41;emos();" >😦</button>
+     <button class="em"onclick="em=42;emos();" >😧</button>
+     <button class="em"onclick="em=43;emos();" >😨</button>
+     <button class="em"onclick="em=44;emos();" >😩</button>
+     <button class="em"onclick="em=45;emos();" >😬</button>
+     <button class="em"onclick="em=46;emos();" >😰</button>
+     <button class="em"onclick="em=47;emos();" >😱</button>
+     <button class="em"onclick="em=48;emos();" >😳</button>
+     <button class="em"onclick="em=49;emos();" >😵</button>
+     <button class="em"onclick="em=50;emos();" >😡</button>
+     <button class="em"onclick="em=51;emos();" >😠</button>
+     <button class="em"onclick="em=52;emos();" >😷</button> 
+     <button class="em"onclick="em=53;emos();" >😇</button>
+
+    <br>  
+                       
+    <button class="dbr" style="width:100px;" onclick="document.getElementById('emo').style.display = 'none';rte.focus();">Hide</button>
+
+    </center>
+   </div>
+   </div>
+     
+
+
+
+
+<!--Text To Speech-->
+       <div id="tts" class="w3-modal"style="z-index:100;" >
+            <div class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 10px;width:500px;height:350px;">
+              <center><br>
+              <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:orangered">
+              Text To Speech
+              </h1> 
+      
+
+
+              <button class="db" id="dis"onclick="mtts();">Speak Fullpage</button>
+              <button class="dbr" style="width:100px;" onclick="document.getElementById('tts').style.display = 'none';rte.focus();">Hide</button>
+            
+           
+
+               <div class="w3-center ">
+                        <textarea class="hide"id="inputThingsToSay" >This is a test!</textarea>
+                        <br>
+                    
+                        <br>
+                        <select id="selectTimbre"class="db" ></select>
+                        <br>
+                        
+                        <label for="inputPitch"style="color:rgb(139, 133, 133);">Pitch</label>
+                        <input id="inputPitch" class="tts" type="number" value="1"></input>
+                       
+                        <label for="inputSpeed"style="color:rgb(139, 133, 133);">Speed</label>
+                        <input id="inputSpeed"class="tts" type="number" value="1"></input>
+                        <br>
+                        <br>
+                        <br>
+                        <h6 style="color:rgb(139, 133, 133);">Click Only One Times For One Time Speak </h6>
+                    </div>
+                       
+                   
+         
+                     </center>
+            </div>
+         </div>
+
+<!-- Speech to text-->
+
+
+<div id="stt" class="w3-modal"style="z-index:100;" >
+    <div class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 10px;width:600px;height:500px;">
+      <center><br>
+      <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:orangered">
+      Speech To Text
+      </h1> 
+
+
+
+    
+      <button class="dbr" style="width:100px;" onclick="document.getElementById('stt').style.display = 'none';rte.focus();">Hide</button>
+    
+   
+
+       <div class="w3-center ">
+        <iframe src="https://webvoice.w3spaces.com/" allow="camera *;microphone *" style="width:500px;height:300px;overflow:hidden;border:none;">
+        </iframe>
+            </div>
+               
+           
+ 
+             </center>
+    </div>
+ </div>
+
+
+<!--browser-->
+<div id="bro" class="w3-modal"style="z-index:100;opacity:1;" >
+    <div  id="bro" class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 10px;width:737px;height:150px;padding-left:10px;top:-70px;">
+    <center><br>
+        <br>
+    
+        <h4 class="w3-left"style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:orangered"> &nbsp;&nbsp;Browse For Words</h4>
+      
+       <br>
+           
+    <a  id="my1" class="hide" target = "e1"></a>
+    <a  id="my2" class="hide"target = "e2"></a>
+    
+    <input type="text" class="db"id="btxt"/>
+    
+    <button class="db" onclick="changeLink();">Browse</button>
+    <div style="position:absolute;width:100%;background:transparent;">
+  
+   <h5 class="w3-left"style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:orangered">Results</h5>
+   <br>
+   <br>
+     <br>    <embed src="files/load.svg"style="width:100px;height:100px;border:none;background:transparent;positon:absolute;z-index:98;">
+    <iframe id="i1" class="browse"style="left:15px;top:30px; "name="e1" src=""></iframe>
+    <iframe  id="i2"class="browse" style="right:30px;top:30px;" name="e2" src=""></iframe>
+    </div> 
+    <button class="hide" onclick="browse();">selected</button>
+    <button class="dbr" onclick="document.getElementById('bro').style.display = 'none'; ">Cancel</button>
+    
+
+   </center>
+   </div>
+   </div>
+ 
+<!-- ABOUT -->
+<div id="about" class="w3-modal"style="z-index:100;" >
+    <div class="w3-modal-content w3-animate-bottom w3-center " style="border-radius: 10px;width:350px;height:350px;">
+    <center><br>
+    <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:orangered">
+    About
+    </h1> 
+    
+    <br>
+    <center>
+        <img src="type2.png">
+   <h4 style="width:300px;">
+       A simple but cool text editor for HTMLers by HTMLers.
+       <br>
+   </h4>
+   <h6>
+      
+   </h6>
+   </center>
+                  
+    <button class="dbr" style="width:100px;" onclick="document.getElementById('about').style.display = 'none';rte.focus();">Hide</button>
+   
+    </center>
+   </div>
+   </div>
+
+
+    
+    </body>
+    
+    </html>
